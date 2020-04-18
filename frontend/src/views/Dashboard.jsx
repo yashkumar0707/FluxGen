@@ -215,7 +215,7 @@ const Dashboard = () => {
                           pointRadius: 0,
                           pointHoverRadius: 0,
                           borderWidth: 3,
-                          data: [300, 310, 316, 322, 330, 326, 333, 345, 338, 354],
+                          data: loadedPlaces,
                           key: 1
                         },
                         {
