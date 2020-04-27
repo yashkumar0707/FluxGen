@@ -1,7 +1,6 @@
 import React, { Component, lazy } from 'react';
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Line, Pie } from 'react-chartjs-2';
 import {
-  Badge,
   Button,
   ButtonDropdown,
   ButtonGroup,
@@ -16,15 +15,13 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Progress,
-  Row,
-  Table,
+  Row
 } from 'reactstrap';
 import './dashboard.css'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
 
-const Widget03 = lazy(() => import('../../views/Widgets/Widget03'));
+//const Widget03 = lazy(() => import('../../views/Widgets/Widget03'));
 
 const brandPrimary = getStyle('--primary')
 const brandSuccess = getStyle('--success')
@@ -40,7 +37,7 @@ const cardChartData1 = {
       label: 'Water used on each day of the week',
       backgroundColor: brandPrimary,
       borderColor: 'rgba(255,255,255,.55)',
-      data: [65, 59, 84, 84, 51, 55, 40],
+      data: [100, 99, 100],
     },
   ],
 };
@@ -192,48 +189,10 @@ const cardChartOpts3 = {
   },
 };
 
-// Card Chart 4
-const cardChartData4 = {
-  labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-  datasets: [
-    {
-      label: 'My First dataset',
-      backgroundColor: 'rgba(255,255,255,.3)',
-      borderColor: 'transparent',
-      data: [78, 81, 80, 45, 34, 12, 40, 75, 34, 89, 32, 68, 54, 72, 18, 98],
-    },
-  ],
-};
 
-const cardChartOpts4 = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false,
-  },
-  scales: {
-    xAxes: [
-      {
-        display: false,
-        barPercentage: 0.6,
-      }],
-    yAxes: [
-      {
-        display: false,
-      }],
-  },
-};
+
 
 // Social Box Chart
-const socialBoxData = [
-  { data: [65, 59, 84, 84, 51, 55, 40], label: 'facebook' },
-  { data: [1, 13, 9, 17, 34, 41, 38], label: 'twitter' },
-  { data: [78, 81, 80, 45, 34, 12, 40], label: 'linkedin' },
-  { data: [35, 23, 56, 22, 97, 23, 64], label: 'google' },
-];
 
 // const makeSocialBoxData = (dataSetNo) => {
 //   const dataset = socialBoxData[dataSetNo];
@@ -284,144 +243,72 @@ const socialBoxData = [
 // };
 
 // sparkline charts
-const sparkLineChartData = [
-  {
-    data: [35, 23, 56, 22, 97, 23, 64],
-    label: 'New Clients',
-  },
-  {
-    data: [65, 59, 84, 84, 51, 55, 40],
-    label: 'Recurring Clients',
-  },
-  {
-    data: [35, 23, 56, 22, 97, 23, 64],
-    label: 'Pageviews',
-  },
-  {
-    data: [65, 59, 84, 84, 51, 55, 40],
-    label: 'Organic',
-  },
-  {
-    data: [78, 81, 80, 45, 34, 12, 40],
-    label: 'CTR',
-  },
-  {
-    data: [1, 13, 9, 17, 34, 41, 38],
-    label: 'Bounce Rate',
-  },
-];
 
-const makeSparkLineData = (dataSetNo, variant) => {
-  const dataset = sparkLineChartData[dataSetNo];
-  const data = {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    datasets: [
-      {
-        backgroundColor: 'transparent',
-        borderColor: variant ? variant : '#c2cfd6',
-        data: dataset.data,
-        label: dataset.label,
-      },
-    ],
-  };
-  return () => data;
-};
 
-const sparklineChartOpts = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  responsive: true,
-  maintainAspectRatio: true,
-  scales: {
-    xAxes: [
-      {
-        display: false,
-      }],
-    yAxes: [
-      {
-        display: false,
-      }],
-  },
-  elements: {
-    line: {
-      borderWidth: 2,
-    },
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4,
-      hoverBorderWidth: 3,
-    },
-  },
-  legend: {
-    display: false,
-  },
-};
+
 
 // Main Chart
 
 //Random Numbers
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+// function random(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
 
-var elements = 27;
-var data1 = [];
-var data2 = [];
-var data3 = [];
+// var elements = 27;
+// var data1 = [];
+// var data2 = [];
+// var data3 = [];
 
-for (var i = 0; i <= elements; i++) {
-  data1.push(random(50, 200));
-  data2.push(random(80, 100));
-  data3.push(65);
-}
+// for (var i = 0; i <= elements; i++) {
+//   data1.push(random(50, 200));
+//   data2.push(random(80, 100));
+//   data3.push(65);
+// }
 
 
-const mainChartOpts = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips,
-    intersect: true,
-    mode: 'index',
-    position: 'nearest',
-    callbacks: {
-      labelColor: function (tooltipItem, chart) {
-        return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
-      }
-    }
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: false,
-  },
-  scales: {
-    xAxes: [
-      {
-        gridLines: {
-          drawOnChartArea: false,
-        },
-      }],
-    yAxes: [
-      {
-        ticks: {
-          beginAtZero: true,
-          maxTicksLimit: 5,
-          stepSize: Math.ceil(250 / 5),
-          max: 250,
-        },
-      }],
-  },
-  elements: {
-    point: {
-      radius: 0,
-      hitRadius: 10,
-      hoverRadius: 4,
-      hoverBorderWidth: 3,
-    },
-  },
-};
+// const mainChartOpts = {
+//   tooltips: {
+//     enabled: false,
+//     custom: CustomTooltips,
+//     intersect: true,
+//     mode: 'index',
+//     position: 'nearest',
+//     callbacks: {
+//       labelColor: function (tooltipItem, chart) {
+//         return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].borderColor }
+//       }
+//     }
+//   },
+//   maintainAspectRatio: false,
+//   legend: {
+//     display: false,
+//   },
+//   scales: {
+//     xAxes: [
+//       {
+//         gridLines: {
+//           drawOnChartArea: false,
+//         },
+//       }],
+//     yAxes: [
+//       {
+//         ticks: {
+//           beginAtZero: true,
+//           maxTicksLimit: 5,
+//           stepSize: Math.ceil(250 / 5),
+//           max: 250,
+//         },
+//       }],
+//   },
+//   elements: {
+//     point: {
+//       radius: 0,
+//       hitRadius: 10,
+//       hoverRadius: 4,
+//       hoverBorderWidth: 3,
+//     },
+//   },
+// };
 
 class Dashboard extends Component {
 
@@ -441,10 +328,13 @@ class Dashboard extends Component {
       energyData3: '',
       waterData3: '',
       timeStamp: '',
+      timeStamp2: '',
       warning: false,
       cardenergy: 0,
       cardwater: 0,
-      totalCost: 0
+      totalCost: 0,
+      graph_energy: '',
+      graph_water: ''
     };
   }
 
@@ -473,39 +363,49 @@ class Dashboard extends Component {
     await fetch(`http://localhost:5000/api/energy/p1`)
       .then(response => response.json())
       .then(energy => {
-        console.log(energy)
         var ene1 = []
         var ene2 = []
         var ene3 = []
         var time = []
+        var time2 = []
         var wat1 = []
         var wat2 = []
         var wat3 = []
+        var graph_ene = []
+        var graph_wat = []
         var cardene = 0.0
         var cardwat = 0.0
         var time_temp = ''
-        energy.energy.forEach(element => {
-          ene1.push(element.Energy1 * 1000)
-          wat1.push(element.WaterLevel1)
-          ene2.push(element.Energy1 * 1000)
-          wat2.push(element.WaterLevel2)
-          ene3.push(element.Energy3 * 1000)
-          wat3.push(element.WaterLevel3)
-          time_temp = element.Hour + ':' + element.Minute
+        var lenn = energy.energy.length
+        console.log(energy.energy[0])
+        var i
+        for (i = lenn - 12; i < lenn; i++) {
+          ene1.push(energy.energy[i].Energy1 * 1000)
+          wat1.push(energy.energy[i].WaterLevel1)
+          ene2.push(energy.energy[i].Energy1 * 1000)
+          wat2.push(energy.energy[i].WaterLevel2)
+          ene3.push(energy.energy[i].Energy3 * 1000)
+          wat3.push(energy.energy[i].WaterLevel3)
+
+          time_temp = energy.energy[i].Hour + ':' + energy.energy[i].Minute
+
           time.push(time_temp)
-          cardene = cardene + element.Energy1 + element.Energy2 + element.Energy3
-          cardwat = cardwat + element.Water_Level3 + element.Water_Level2 + element.Water_Level1
-        })
-        console.log(ene1)
+          cardene = cardene + energy.energy[i].Energy1 + energy.energy[i].Energy2 + energy.energy[i].Energy3
+          cardwat = cardwat + energy.energy[i].WaterLevel3 + energy.energy[i].WaterLevel2 + energy.energy[i].WaterLevel1
+        }
+        for (i = lenn - 7; i < lenn; i++) {
+          graph_ene.push(energy.energy[i].Energy1 + energy.energy[i].Energy2 + energy.energy[i].Energy3)
+          graph_wat.push(energy.energy[i].WaterLevel1 + energy.energy[i].WaterLevel2 + energy.energy[i].WaterLevel3)
+          time_temp = energy.energy[i].Hour + ':' + energy.energy[i].Minute
+          time2.push(time_temp)
+        }
         var len = wat1.length
         //wat1[len] = 0
-
-        if (wat1[len] === 0 || wat1[len] === 0 || wat1[len] === 0) {
+        if (wat1[len - 1] === 0 || wat3[len - 1] === 0 || wat2[len - 1] === 0) {
           this.setState({ warning: true })
         }
-        this.setState({ cardenergy: cardene, cardwater: cardwat, energyData1: ene1, waterData1: wat1, energyData2: ene2, waterData2: wat2, energyData3: ene3, waterData3: wat3, timeStamp: time })
+        this.setState({ timeStamp2: time2, graph_energy: graph_ene, graph_water: graph_wat, cardenergy: cardene, cardwater: cardwat, energyData1: ene1, waterData1: wat1, energyData2: ene2, waterData2: wat2, energyData3: ene3, waterData3: wat3, timeStamp: time })
       })
-    console.log(this.state.energyData1)
   }
   getfromApi = async () => {
     let myheaders = {
@@ -727,7 +627,60 @@ class Dashboard extends Component {
                 <div>Total Energy Consumption</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
-                <Line data={cardChartData2} options={cardChartOpts2} height={70} />
+                <Line data={{
+                  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                  datasets: [
+                    {
+                      label: 'My First dataset',
+                      backgroundColor: brandInfo,
+                      borderColor: 'rgba(255,255,255,.55)',
+                      data: this.state.graph_energy,
+                    },
+                  ],
+                }} options={{
+                  tooltips: {
+                    enabled: false,
+                    custom: CustomTooltips
+                  },
+                  maintainAspectRatio: false,
+                  legend: {
+                    display: false,
+                  },
+                  scales: {
+                    xAxes: [
+                      {
+                        gridLines: {
+                          color: 'transparent',
+                          zeroLineColor: 'transparent',
+                        },
+                        ticks: {
+                          fontSize: 2,
+                          fontColor: 'transparent',
+                        },
+
+                      }],
+                    yAxes: [
+                      {
+                        display: false,
+                        ticks: {
+                          display: false,
+                          min: Math.min.apply(Math, cardChartData2.datasets[0].data) - 5,
+                          max: Math.max.apply(Math, cardChartData2.datasets[0].data) + 5,
+                        },
+                      }],
+                  },
+                  elements: {
+                    line: {
+                      tension: 0.00001,
+                      borderWidth: 1,
+                    },
+                    point: {
+                      radius: 4,
+                      hitRadius: 10,
+                      hoverRadius: 4,
+                    },
+                  },
+                }} height={70} />
               </div>
             </Card>
           </Col>
@@ -758,7 +711,7 @@ class Dashboard extends Component {
                       label: 'My First dataset',
                       backgroundColor: brandPrimary,
                       borderColor: 'rgba(255,255,255,.55)',
-                      data: [65, 59, 84, 84, 51, 70, 56],
+                      data: this.state.graph_water,
                     },
                   ],
                 }} options={cardChartOpts1} height={70} />
@@ -781,8 +734,8 @@ class Dashboard extends Component {
                     </DropdownMenu>
                   </Dropdown>
                 </ButtonGroup>
-                <div className="text-value">{this.state.totalCost} Rupees</div>
-                <div>The cost</div>
+                <div className="text-value">13.556 Units</div>
+                <div>Average Power Consumed</div>
               </CardBody>
               <div className="chart-wrapper" style={{ height: '70px' }}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70} />
@@ -992,10 +945,10 @@ class Dashboard extends Component {
                     //   "Sat",
                     //   "Sun",
                     // ],
-                    labels: this.state.waterData1,
+                    labels: this.state.timeStamp2,
                     datasets: [
                       {
-                        data: this.state.energyData1,
+                        data: this.state.graph_energy,
                         fill: false,
                         borderColor: "#fbc658",
                         backgroundColor: "transparent",
@@ -1004,16 +957,16 @@ class Dashboard extends Component {
                         pointHoverRadius: 4,
                         pointBorderWidth: 8
                       },
-                      // {
-                      //   data: [0, 5, 10, 12, 20, 27, 30, 34],
-                      //   fill: false,
-                      //   borderColor: "#51CACF",
-                      //   backgroundColor: "transparent",
-                      //   pointBorderColor: "#51CACF",
-                      //   pointRadius: 4,
-                      //   pointHoverRadius: 4,
-                      //   pointBorderWidth: 8
-                      // }
+                      {
+                        data: this.state.graph_water,
+                        fill: false,
+                        borderColor: "#51CACF",
+                        backgroundColor: "transparent",
+                        pointBorderColor: "#51CACF",
+                        pointRadius: 4,
+                        pointHoverRadius: 4,
+                        pointBorderWidth: 8
+                      }
                     ]
                   }
 
@@ -1030,7 +983,9 @@ class Dashboard extends Component {
               </CardBody>
               <CardFooter>
                 <div className="chart-legend">
-                  <i className="fa fa-circle text-warning" /> Water Pumping{" "}
+                  <i className="fa fa-circle text-warning" /> Energy Consumption{" "}
+                  <i className="fa fa-circle text-primary" /> Water Comsumption{" "}
+
                 </div>
               </CardFooter>
             </Card>
